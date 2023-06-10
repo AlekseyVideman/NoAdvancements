@@ -1,0 +1,3 @@
+blocked-worlds: # Worlds in which the plugin will work.
+  - spawn
+

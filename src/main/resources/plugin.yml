@@ -1,0 +1,6 @@
+main: ${group}.noadvancements.NoAdvancements
+name: NoAdvancements
+version: ${version}
+description: "${description}"
+api-version: 1.13
+author: WhiteLight

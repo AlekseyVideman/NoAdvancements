@@ -1,0 +1,7 @@
+.idea/
+build/
+.gradle/
+
+!build.gradle
+!gradle.properties
+!settings.gradle

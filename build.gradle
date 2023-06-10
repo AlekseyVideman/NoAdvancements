@@ -1,0 +1,56 @@
+plugins {
+    id "java"
+}
+
+sourceCompatibility = "17"
+targetCompatibility = "17"
+
+repositories {
+    mavenCentral()
+    maven { url = "https://repo.papermc.io/repository/maven-public/" }
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT"
+}
+
+jar {
+   archiveBaseName.set("NoAdvancements")
+   archiveVersion.set(pluginVersion)
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named("processResources") {
+    filesMatching("plugin.yml") {
+        expand([
+            group: pluginGroup,
+            version: pluginVersion,
+            description: pluginDescription
+        ])
+    }
+}
+
+//tasks.create("startDevServer". Copy) {
+//    String servDir = "E:\\DevCraft"
+//
+//    copy {
+//        from layout.buildDirectory.file("NoAdvancements-${pluginVersion}.jar")
+//        into servDir.concat("\\plugins")
+//    }
+//
+//    ProcessBuilder pb = new ProcessBuilder(".\\ПУСК.bat")
+//    pb.directory(new File(servDir))
+//    try {
+//       pb.start()
+//    } catch (IOException e) {
+//        e.printStackTrace()
+//    }
+//}
+//
+//tasks.named("startDevServer").dependsOn(build)
+
+
+
