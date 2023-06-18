@@ -1,6 +1,5 @@
-main: ${group}.noadvancements.NoAdvancements
+main: com.github.alekseyvideman.noadvancements.NoAdvancements
 name: NoAdvancements
 version: ${version}
-description: "${description}"
 api-version: 1.13
 author: WhiteLight
