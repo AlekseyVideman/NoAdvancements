@@ -2,7 +2,6 @@ package com.github.alekseyvideman.noadvancements;
 
 import com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
@@ -32,14 +31,16 @@ public class AdvancementListener implements Listener {
         if (doBroadcast) {
             return;
         }
+        if (e.getAdvancement().getDisplay() == null) {
+            return;
+        }
 
         var player = e.getPlayer();
-        var advancement = e.getAdvancement();
         var firstPartResultMessage = pl.getConfig().getString("advancement-message");
-        var display = advancement.displayName();
-        var resultMessage = Component.text(firstPartResultMessage).append(display);
-                
+        var displayName = e.getAdvancement().displayName();
+        var resultMessage = Component.text(firstPartResultMessage).append(displayName);
         player.sendMessage(resultMessage);
+
         e.message(null); // Cancel vanilla message sending
     }
 }
