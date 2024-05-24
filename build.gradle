@@ -2,8 +2,9 @@ plugins {
     id "java"
 }
 
-sourceCompatibility = "17"
-targetCompatibility = "17"
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+}
 
 repositories {
     mavenCentral()
@@ -11,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly "io.papermc.paper:paper-api:1.20-R0.1-SNAPSHOT"
+    compileOnly "io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT"
 }
 
 jar {
@@ -31,24 +32,14 @@ tasks.named("processResources") {
     }
 }
 
-//tasks.create("startDevServer". Copy) {
-//    String servDir = "E:\\DevCraft"
-//
-//    copy {
-//        from layout.buildDirectory.file("NoAdvancements-${pluginVersion}.jar")
-//        into servDir.concat("\\plugins")
-//    }
-//
-//    ProcessBuilder pb = new ProcessBuilder(".\\ПУСК.bat")
-//    pb.directory(new File(servDir))
-//    try {
-//       pb.start()
-//    } catch (IOException e) {
-//        e.printStackTrace()
-//    }
-//}
-//
-//tasks.named("startDevServer").dependsOn(build)
+tasks.register('movePluginToServer') {
+    dependsOn(build)
+    doLast {
+        def pathToServer = "E:/DevCraft"
+        def pluginFileName = project.name + "-" + pluginVersion + ".jar"
+        ant.move(file: buildDir.getAbsolutePath() + "/libs/" + pluginFileName, tofile: pathToServer + "/plugins/" + pluginFileName)
+    }
+}
 
 
 

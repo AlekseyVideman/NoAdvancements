@@ -1,8 +1,12 @@
 blocked-worlds: # Worlds in which advancements will be not saved for a player.
   - spawn
 
-# Whether or not plugin will send vanilla messages when a player reaches an advancement. If disabled, the plugin will show the message only to the player.
+# Whether or not plugin will send vanilla messages when a player reaches an advancement.
+# If disabled, the plugin will send custom messages and do this only to a player.
 broadcast-advancement-message: true
 
-# To the end of this string will be inserted the name of an advancement.
-advancement-message: "You get the advancement "
+# To the end of this messages will be inserted the name of an advancement.
+# You don't need to put a space at the end of the messages.
+advancement-message:
+  - "You have got the advancement"
+  - "** Second advancement message **"
