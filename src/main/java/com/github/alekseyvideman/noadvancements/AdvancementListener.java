@@ -45,7 +45,6 @@ public class AdvancementListener implements Listener {
     }
 
     private Component getAdvancementMessage(Advancement advancement) {
-        System.out.println(advancement.getKey());
         var advancementMessages = plugin.getConfig().getStringList("advancement-message");
         var advancementMessage = advancementMessages.get(new Random().nextInt(advancementMessages.size()));
 
